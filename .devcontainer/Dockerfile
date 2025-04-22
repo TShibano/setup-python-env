@@ -8,12 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certifi
 # Setting User >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user
 ARG USER_NAME
-ARG USER_UID
-ARG USER_GID
+# UID/GIDはdevcontainerが自動で合わせてくれるので、コンテナOS内で被らないUID/GIDを指定する
+ARG USER_UID=12345
+ARG USER_GID=$USER_UID
 ENV USER_NAME=${USER_NAME}
 ENV USER_UID=${USER_UID}
 ENV USER_GID=${USER_GID}
-RUN echo "user: ${USER_NAME}, uid: ${USER_UID}, gid: ${USER_GID}"
 RUN groupadd -g ${USER_GID} ${USER_NAME} \
     && useradd -u ${USER_UID} -g ${USER_GID} -m ${USER_NAME} -s /bin/bash
 USER ${USER_NAME}
