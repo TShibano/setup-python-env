@@ -1,0 +1,31 @@
+// devcontainer.json
+{
+    "name": "Python Dev Container",
+    "build": {
+       "dockerfile": "./Dockerfile",
+        "args": {
+            "USER_NAME": "${localEnv:USER_NAME}",
+            "USER_UID": "${localEnv:USER_UID}",
+            "USER_GID": "${localEnv:USER_GID}"
+        }
+    },
+    // ローカルのGitの設定をコンテナにコピー
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    // 拡張機能
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Python
+                "ms-python.python",
+                // Jupyter
+                "ms-toolsai.jupyter" ,
+                // Pythonのインデントを整えてくれる
+                "kevinrose.vsc-python-indent",
+                // PythonのFormatter
+                "charliermarsh.ruff",
+                // Pythonで関数のDocstringの雛形を作成してくれる
+                "njpwerner.autodocstring",
+            ]
+        }
+    }
+}
