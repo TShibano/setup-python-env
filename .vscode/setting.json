@@ -1,0 +1,8 @@
+# VScodeの拡張機能に関する設定を書く
+# インストールする拡張機能
+# Python: ms-python.python
+# Jupyter: ms-toolsai.jupyter
+# Ruff: charliermarsh.ruff
+# Python Indent: kevinrose.vsc-python-indent
+# Python Docstring: njpwerner.autodocstring
+  
