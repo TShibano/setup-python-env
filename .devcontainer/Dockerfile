@@ -34,4 +34,6 @@ ENV PATH="/${USER_NAME}/.local/bin/:$PATH"
 USER root
 RUN rm /uv-installer.sh
 USER ${USER_NAME}
+# uv 入力補完を有効にする
+echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
