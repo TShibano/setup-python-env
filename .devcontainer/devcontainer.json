@@ -2,12 +2,12 @@
 {
     "name": "Python Dev Container",
     "build": {
-       "dockerfile": "./Dockerfile",
-        "args": {
-            "USER_NAME": "${localEnv:USER}"
-        }
+       "dockerfile": "./Dockerfile"
+        //"args": {
+            //"USER_NAME": "${localEnv:USER}"
+        //}
     },
-    "remoteUser": "${localEnv:USER}",
+    "remoteUser": "vscode",
     // ローカルのGitの設定をコンテナにコピー
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     // 拡張機能
@@ -23,7 +23,7 @@
                 // PythonのFormatter
                 "charliermarsh.ruff",
                 // Pythonで関数のDocstringの雛形を作成してくれる
-                "njpwerner.autodocstring",
+                "njpwerner.autodocstring"
             ]
         }
     }

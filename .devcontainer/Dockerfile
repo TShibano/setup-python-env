@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certifi
 
 # Setting User >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user
-ARG USER_NAME
+ARG USER_NAME=vscode
 # UID/GIDはdevcontainerが自動で合わせてくれるので、コンテナOS内で被らないUID/GIDを指定する
 ARG USER_UID=12345
 ARG USER_GID=$USER_UID
@@ -21,19 +21,13 @@ USER ${USER_NAME}
 
 # Setting User >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Download the latest installer
-USER root
-ADD https://astral.sh/uv/install.sh /uv-installer.sh
-RUN chmod a+x /uv-installer.sh && chown $USER_NAME:$USER_NAME /uv-installer.sh
-USER ${USER_NAME}
+ADD --chown=${USER_NAME}:${USER_NAME} https://astral.sh/uv/install.sh /home/${USER_NAME}/uv-installer.sh
+RUN chmod u+x /home/${USER_NAME}/uv-installer.sh
 # Run the installer
-RUN sh /uv-installer.sh
+RUN sh /home/${USER_NAME}/uv-installer.sh && rm  /home/${USER_NAME}/uv-installer.sh
 
-# パスを通す
+# # パスを通す
 ENV PATH="/${USER_NAME}/.local/bin/:$PATH"
-# remove the installer
-USER root
-RUN rm /uv-installer.sh
-USER ${USER_NAME}
 # uv 入力補完を有効にする
-echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+RUN echo 'eval "$(uv generate-shell-completion bash)"' >> /home/${USER_NAME}/.bashrc
+# # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
