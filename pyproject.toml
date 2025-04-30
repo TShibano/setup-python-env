@@ -1,0 +1,74 @@
+[project]
+name = "setup-python-env"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "matplotlib-fontja>=1.1.0",
+    "mlflow>=2.22.0",
+    "numpy>=2.2.5",
+    "openpyxl>=3.1.5",
+    "pandera[polars]>=0.23.1",
+    "polars[all]>=1.27.1",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.15.2",
+    "seaborn>=0.13.2",
+    "statsmodels>=0.14.4",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "pyright>=1.1.400",
+    "pytest>=8.3.5",
+    "ruff>=0.11.7",
+    "typing-extensions>=4.13.2",
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+exclude = [
+    ".devcontainer",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "docs",
+    ".git",
+    ".gitignore",
+    "dist",
+    "build",
+
+]
+# 守るスタイル
+select = [
+    "E",     # PEP8
+    "F",     # 未定義/未使用のなどのバグ検知
+    "W",     # pycodestyle warning
+    "I",     # インポート順の自動整形
+    "B",     # 安全性の注意点(flake-bugbear)
+    "N",     # pep8-naming
+    "UP",    # pyupgradeで最新構文へ
+]
+# 除外するスタイル
+ignore = [
+    "E501",    # 行数制限
+]
+[tool.ruff.lint.pyflakes]
+allowed-unused-imports = ["matplotlib_fontja"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.13"
+strict_optional = true
+check_untyped_defs = true
+disallow_untyped_defs = false
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.pandera]
+# 設定不要

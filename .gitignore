@@ -1,0 +1,8 @@
+# 仮想環境
+.venv
+# Python
+__pycache__/
+# Jupyter Notebook
+.ipynb_checkpoints
+# cache
+.ruff_cache
