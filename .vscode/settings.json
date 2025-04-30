@@ -8,25 +8,14 @@
 {
     // Pythonの拡張機能の設定
     "notebook.formatOnSave.enabled": true, // Jupyter Notebookの保存時にフォーマットを実行
+    "ruff.path": [".venv/bin/ruff"], // Ruffのパスを指定．仮想環境中の ruff を指定
     "[python]": {
         "editor.formatOnSave": true, // Pythonの保存時にフォーマットを実行
         "editor.defaultFormatter": "charliermarsh.ruff", // Ruffをデフォルトのフォーマッタに設定
     },
-
     // Jupyterの拡張機能の設定
-    // Ruffの拡張機能の設定
-    "ruff.lint.enable": true,
-    "ruff.nativeServer": "on",
-    "ruff.lineLength": 120,
-    "ruff.lint.select": [
-        "E",
-        "F",
-        "W",
-        "I",
-        "B",
-        "N",
-    ]
-
     // Python Indentの拡張機能の設定
-    // Python Docstringの拡張機能の設定
+    // Python autoDocstringの拡張機能の設定
+    "autoDocstring.docstringFormat": "google", // DocstringのフォーマットをGoogleに設定
+    "autoDocstring.startOnNewLine": true, // Docstringを新しい行に書かない
 }
