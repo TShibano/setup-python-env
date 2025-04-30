@@ -20,7 +20,9 @@
                 // PythonのFormatter
                 "charliermarsh.ruff",
                 // Pythonで関数のDocstringの雛形を作成してくれる
-                "njpwerner.autodocstring"
+                "njpwerner.autodocstring",
+                // Markdown
+                "yzhang.markdown-all-in-one"
             ]
         }
     }
