@@ -7,6 +7,23 @@
     "remoteUser": "vscode",
     // ローカルのGitの設定をコンテナにコピー
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    // env
+    "runArgs": [
+        "--env-file", ".devcontainer/.env", "--network", "host"
+    ],
+    // MLflowに接続するための設定
+    // .envファイルを記載する
+    "remoteEnv": {
+        "AWS_ACCESS_KEY_ID": "${localEnv:AWS_ACCESS_KEY_ID}",
+        "AWS_SECRET_ACCESS_KEY": "${localEnv:AWS_SECRET_ACCESS_KEY}",
+        "MLFLOW_S3_ENDPOINT_URL": "${localEnv:MLFLOW_S3_ENDPOINT_URL}"
+    },
+    // バインドマウント
+    // 主にデータをコンテナにマウントするために使用
+    // リードオンリーの設定は推奨
+    "mounts": [
+        //"source=<host_directory>,target=<container_directory>,type=bind,readonly"
+    ],
     // 拡張機能
     "customizations": {
         "vscode": {

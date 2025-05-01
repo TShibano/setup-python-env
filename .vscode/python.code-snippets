@@ -37,4 +37,13 @@
         ],
         "description": "cell block in .py file"
     },
+    "ifmain": {
+        "prefix": "ifmain",
+        "body": [
+            "if __name__ == '__main__':",
+            "    main()",
+            ""
+        ],
+        "description": "if __name__ == '__main__':"
+    },
 }
