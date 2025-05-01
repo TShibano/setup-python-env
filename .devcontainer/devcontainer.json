@@ -2,7 +2,8 @@
 {
     "name": "Python Dev Container",
     "build": {
-       "dockerfile": "./Dockerfile"
+       "dockerfile": "./Dockerfile",
+       "context": ".."
     },
     "remoteUser": "vscode",
     // ローカルのGitの設定をコンテナにコピー
@@ -11,13 +12,6 @@
     "runArgs": [
         "--env-file", ".devcontainer/.env", "--network", "host"
     ],
-    // MLflowに接続するための設定
-    // .envファイルを記載する
-    "remoteEnv": {
-        "AWS_ACCESS_KEY_ID": "${localEnv:AWS_ACCESS_KEY_ID}",
-        "AWS_SECRET_ACCESS_KEY": "${localEnv:AWS_SECRET_ACCESS_KEY}",
-        "MLFLOW_S3_ENDPOINT_URL": "${localEnv:MLFLOW_S3_ENDPOINT_URL}"
-    },
     // バインドマウント
     // 主にデータをコンテナにマウントするために使用
     // リードオンリーの設定は推奨
@@ -31,7 +25,7 @@
                 // Python
                 "ms-python.python",
                 // Jupyter
-                "ms-toolsai.jupyter" ,
+                "ms-toolsai.jupyter",
                 // Pythonのインデントを整えてくれる
                 "kevinrose.vsc-python-indent",
                 // PythonのFormatter

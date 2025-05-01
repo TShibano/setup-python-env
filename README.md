@@ -27,6 +27,11 @@ Python + VScode + Devcontainerを用いてデータ分析環境を構築する�
 * スクリプトを実行する場合，`uv run <file>.py`を実行する．
   * 詳細は[こちら](https://docs.astral.sh/uv/guides/scripts/)
 
+### MLflowの使い方
+1. `.devcontainer/.env.example` を参考に，`.devcontainer/.env` ファイルを作成する
+   1. 記載内容は各自のMLflowサーバの環境に合わせる
+
+
 ## 動作環境
 以下のホストOSで検証済
 * Ubuntu22.04で動作確認
@@ -51,6 +56,7 @@ project/
 ├── models/            # 保存されたモデルやチェックポイント
 ├── notebooks/         # データ分析ファイル
 ├── scripts/           # Pythonスクリプト(データ処理、モデルなど)
+├── samples/           # Pythonスクリプトのサンプル(mlflowへの接続確認用)
 ├── tests/             # テストコード
 ├── pyproject.toml     # プロジェクト設定ファイル
 ├── pyrightconfig.json # pyrightの設定ファイル
